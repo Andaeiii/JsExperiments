@@ -3,35 +3,35 @@
 
 //Arrays // Objects.... 
 
-var arr = String('aminu;ocholi;oketta;odinma;mohammed;fidelis;james;brown;').split(';');
+// var arr = String('aminu;ocholi;oketta;odinma;mohammed;fidelis;james;brown;').split(';');
 
-var students = [
-    { name: 'aminu', age: 9, class: 'primary 6' },
-    { name: 'delilah', age: 84, class: 'primary 6' },
-    { name: 'mary', age: 19, class: 'primary 6' },
-    { name: 'sujim', age: 12, class: 'primary 6' },
-    { name: 'Mohammed', age: 29, class: 'primary 6' },
-    { name: 'Tango', age: 84, class: 'primary 6' },
-    { name: 'Maimuna', age: 69, class: 'primary 6' },
-    { name: 'tobi', age: 3, class: 'primary 6' }
-];
-
-
-var scores = [34, 567, 323, 11, 665, 78, 3, 6, 88, 2];
-var sorted = scores.sort((a, b) => b - a);
+// var students = [
+//     { name: 'aminu', age: 9, class: 'primary 6' },
+//     { name: 'delilah', age: 84, class: 'primary 6' },
+//     { name: 'mary', age: 19, class: 'primary 6' },
+//     { name: 'sujim', age: 12, class: 'primary 6' },
+//     { name: 'Mohammed', age: 29, class: 'primary 6' },
+//     { name: 'Tango', age: 84, class: 'primary 6' },
+//     { name: 'Maimuna', age: 69, class: 'primary 6' },
+//     { name: 'tobi', age: 3, class: 'primary 6' }
+// ];
 
 
-var filtered = students.filter((a) => a.age < 20).sort((a, b) => a.age - b.age);
+// var scores = [34, 567, 323, 11, 665, 78, 3, 6, 88, 2];
+// var sorted = scores.sort((a, b) => b - a);
 
-console.log(filtered)
 
-var totalAges = students.reduce((a, c) => a + c.age, 0)
+// var filtered = students.filter((a) => a.age < 20).sort((a, b) => a.age - b.age);
 
-console.log(totalAges)
+// console.log(filtered)
 
-//for array destruction 
-const { name, age } = students[2];
-console.log(`Student 2 = ${name} and he is ${age}yrs old`);
+// var totalAges = students.reduce((a, c) => a + c.age, 0)
+
+// console.log(totalAges)
+
+// //for array destruction 
+// const { name, age } = students[2];
+// console.log(`Student 2 = ${name} and he is ${age}yrs old`);
 
 
 
@@ -135,6 +135,10 @@ let allRatings = pagesData.map(page => page.reduce((a, c) => a + c.rating, 0));
 
 let moviesCount = pagesData.map(data => data.length).reduce((a, c) => a + c);
 let totalOfRatings = allRatings.reduce((a, c) => a + c);
+console.log(totalOfRatings, moviesCount);
+
+console.log(allRatings);
+
 let averageRating = totalOfRatings / moviesCount;
 console.log('Average Rating ', averageRating);  //averageRating..
 
@@ -160,6 +164,9 @@ console.log('Maximum Rating ', maxRating); //maximumRating
 // console.log(movies.length);
 
 
+sum = [15.9, 13, 46.8, 6.8, 8.0, 12.6, 3.6].reduce((a, c) => a + c);
+
+console.log(sum);
 
 
 
