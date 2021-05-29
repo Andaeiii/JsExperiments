@@ -1,7 +1,7 @@
 
-Arrays and Objects....
+//Arrays and Objects.... 
 
-Arrays // Objects.... 
+//Arrays // Objects.... 
 
 var arr = String('aminu;ocholi;oketta;odinma;mohammed;fidelis;james;brown;').split(';');
 
@@ -132,28 +132,32 @@ let movies = [
 
 let pagesData = movies.map(m => m.data);
 let allRatings = pagesData.map(page => page.reduce((a, c) => a + c.rating, 0));
-let movieWithmaxRating = pagesData.map(page => page.sort((a, b) => b.rating - a.rating)[0]).sort((a, b) => b.rating - a.rating)[0];
-let maxRating = movieWithmaxRating.rating;
-console.log(maxRating);
-
-console.log(sortedRatings);
-
 
 let moviesCount = pagesData.map(data => data.length).reduce((a, c) => a + c);
 let totalOfRatings = allRatings.reduce((a, c) => a + c);
+let averageRating = totalOfRatings / moviesCount;
+console.log('Average Rating ', averageRating);  //averageRating..
 
-//console.log(allmovies);
+let movieWithmaxRating = pagesData.map(page => page.sort((a, b) => b.rating - a.rating)[0]).sort((a, b) => b.rating - a.rating)[0];
+let maxRating = movieWithmaxRating.rating;
 
-//console.log(allRatings);
+console.log('Maximum Rating ', maxRating); //maximumRating
+
+// //console.log(allmovies);
+
+// //console.log(allRatings);
+
+
+// let MaximumRating = maxRating 
+// console.log(AverageRating);
 
 
 
-
-console.log(totalOfRatings);
-
+// console.log(totalOfRatings);
 
 
-console.log(movies.length);
+
+// console.log(movies.length);
 
 
 
