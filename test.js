@@ -1,37 +1,35 @@
 
-//Arrays and Objects.... 
+//Arrays and Objects....
 
-//Arrays // Objects.... 
+var arr = String('aminu;ocholi;oketta;odinma;mohammed;fidelis;james;brown;').split(';');
 
-// var arr = String('aminu;ocholi;oketta;odinma;mohammed;fidelis;james;brown;').split(';');
-
-// var students = [
-//     { name: 'aminu', age: 9, class: 'primary 6' },
-//     { name: 'delilah', age: 84, class: 'primary 6' },
-//     { name: 'mary', age: 19, class: 'primary 6' },
-//     { name: 'sujim', age: 12, class: 'primary 6' },
-//     { name: 'Mohammed', age: 29, class: 'primary 6' },
-//     { name: 'Tango', age: 84, class: 'primary 6' },
-//     { name: 'Maimuna', age: 69, class: 'primary 6' },
-//     { name: 'tobi', age: 3, class: 'primary 6' }
-// ];
+var students = [
+    { name: 'aminu', age: 9, class: 'primary 6' },
+    { name: 'delilah', age: 84, class: 'primary 6' },
+    { name: 'mary', age: 19, class: 'primary 6' },
+    { name: 'sujim', age: 12, class: 'primary 6' },
+    { name: 'Mohammed', age: 29, class: 'primary 6' },
+    { name: 'Tango', age: 84, class: 'primary 6' },
+    { name: 'Maimuna', age: 69, class: 'primary 6' },
+    { name: 'tobi', age: 3, class: 'primary 6' }
+];
 
 
-// var scores = [34, 567, 323, 11, 665, 78, 3, 6, 88, 2];
-// var sorted = scores.sort((a, b) => b - a);
+var scores = [34, 567, 323, 11, 665, 78, 3, 6, 88, 2];
+var sorted = scores.sort((a, b) => b - a);
 
 
-// var filtered = students.filter((a) => a.age < 20).sort((a, b) => a.age - b.age);
+var filtered = students.filter((a) => a.age < 20).sort((a, b) => a.age - b.age); //get only students less than 20 and sort them ascending... 
 
-// console.log(filtered)
+console.log(filtered)
 
-// var totalAges = students.reduce((a, c) => a + c.age, 0)
+var totalAges = students.reduce((a, c) => a + c.age, 0);    //start adding from zero... 
 
-// console.log(totalAges)
+console.log(totalAges);
 
-// //for array destruction 
-// const { name, age } = students[2];
-// console.log(`Student 2 = ${name} and he is ${age}yrs old`);
+//for array destruction 
+const { name, age } = students[2];
+console.log(`Student 2 = ${name} and he is ${age}yrs old`);
 
 
 
@@ -164,7 +162,8 @@ console.log('Maximum Rating ', maxRating); //maximumRating
 // console.log(movies.length);
 
 
-sum = [15.9, 13, 46.8, 6.8, 8.0, 12.6, 3.6].reduce((a, c) => a + c);
+let numbrs = [15.9, 13, 46.8, 6.8, 8.0, 12.6, 3.6];
+let sum = numbrs.reduce((a, c) => a + c);
 
 console.log(sum);
 
