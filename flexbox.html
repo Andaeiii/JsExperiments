@@ -15,8 +15,8 @@
         }
 
         .sshow{
-            width:1300px;
-            height:600px;
+            width:1350px;
+            height:650px;
             display:flex;
             justify-content: center;
         }
@@ -31,22 +31,39 @@
             width:20%;
             margin:3px;
             
-            display: flex;
-            flex-direction: column;
+            display: flex;                  /* enables you to use the  */
+            flex-direction: column;         /* makes it either horizontal or vertical. */
   
         }
 
-        .b20 > div{
-            flex:1;
+        /* .b20 > div{
+            flex:1;    
             border-color: red;
-            align-self:stretch;
+            border-radius: 20px;
+            margin:3px;
+            padding:10px;
+        } */
+        
+        .b20 > div{
+             /* flex:1;  takes the available space of the parent... */
             border-radius: 20px;
             margin:3px;
             padding:10px;
         }
 
+        .b20 > div:nth-child(even){
+            flex:1;   /* takes the available space of the parent... */
+            border-color: rgb(0, 102, 116);
+        }
+
+        .b20 > div:nth-child(odd){
+            height:90px !important;
+            border-color: #000;
+        }
+
+
         .b80{
-            flex-grow: 1;
+            flex-grow: 1;  /*  fill the remaining space...   */
             margin:3px;
             background-color:aquamarine;
         }
