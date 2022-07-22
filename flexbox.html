@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style type="text/css">
+        div{
+            /* border:solid 3px #000; */
+            border-collapse: collapse;
+        }
+
+        .sshow{
+            width:1300px;
+            height:600px;
+            display:flex;
+            justify-content: center;
+        }
+
+        .chcard{
+            width:100%;
+            border-color:red;
+            display:flex;
+        }
+
+        .b20{
+            width:20%;
+            margin:3px;
+            
+            display: flex;
+            flex-direction: column;
+  
+        }
+
+        .b20 > div{
+            flex:1;
+            border-color: red;
+            align-self:stretch;
+            border-radius: 20px;
+            margin:3px;
+            padding:10px;
+        }
+
+        .b80{
+            flex-grow: 1;
+            margin:3px;
+            background-color:aquamarine;
+        }
+
+        .tpnum{
+            font-size:60px;
+            padding-top:40px;
+            color:#fff;
+            text-align: center;
+        }
+
+        .tptxt{
+            text-align: center;
+            color:#fff;
+        }
+
+    </style>
+    
+
+
+
+    <div class="sshow owl-carousel">
+
+                
+        <div class="chcard">
+
+            <div class="b20">
+
+                <div style="background-color:rgb(252, 136, 5)">
+                    <div class="tpnum">500,000</div>
+                    <div class="tptxt">hello how far.</div>
+                </div>
+                <div style="background-color:rgb(13, 61, 45)">
+                    <div class="tpnum">500,000</div>
+                    <div class="tptxt">hello how far.</div>
+                </div>
+                <div style="background-color:rgb(10, 199, 247)">
+                    <div class="tpnum">500,000</div>
+                    <div class="tptxt">hello how far.</div>
+                
+                </div>
+            </div>
+
+            
+            <div class="b80">
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+</html>
