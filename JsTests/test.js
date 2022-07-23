@@ -173,8 +173,23 @@ console.log(sum);
 
 
 
+//might have to add how to use the Object also.. 
+//and their corresponding diffferences... with the movies object above... 
 
+let o = movies[0];
 
+//Object.entries(o)
+console.log('entries', Object.entries(o));  //returns the entries as a 2 dimensional array key and value. 
+
+//Object.values(o)
+console.log('values', Object.values(o));  //returns the values in the arrays... 
+
+//Object.keys(o)
+console.log('keys', Object.keys(o));  //returns the keys from the specified array.... 
+
+//Object.fromEntries();
+let ar = Object.entries(o);
+console.log('From Entries', Object.fromEntries(ar));
 
 
 
