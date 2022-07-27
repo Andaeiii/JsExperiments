@@ -257,3 +257,10 @@ console.log('From Entries', Object.fromEntries(ar));
 // console.log(newArr);
 
 
+
+
+//////////////////// Other JS Tips.... 
+//like converting a string into an array.... 
+//just bt spreading it... 
+let str = "He likes food..";
+let arr = [ ...str ]; //converts it to a n array.. 
