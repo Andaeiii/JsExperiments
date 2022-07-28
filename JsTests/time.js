@@ -12,8 +12,6 @@ function analyzeTime(arr) {
   arr.forEach(time => {
     let [h, m] = time.split(':');
 
-    h
-
     if (time.endsWith('pm')) {
       m_value = (parseInt(h) * 60) + hr12 + parseInt(m.substr(0, 2));
       t_apm.push('pm')
