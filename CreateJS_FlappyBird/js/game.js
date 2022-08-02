@@ -44,6 +44,7 @@ function onAssetLoadComplete(){
 
   //add listeners... 
   stage.on("stagemousedown", jumpFlappy);
+  createjs.Ticker.addEventListener("tick", checkCollision);     //check collision.. 
 }
 
 //so bitmaps - extends DisplayObject and needs no caching.. 
@@ -148,4 +149,29 @@ function startGame(){
 }
 
 
-const gameOver = () => console.log('game over... ')
+function checkCollision(){
+  var leftX = flappy.x - flappy.regX + 5; //let 5 - is forgiveness negligible. for the player. 
+  var leftY = flappy.y - flappy.regY + 5;
+
+  var points = [
+    new createjs.Point(leftX, leftY),
+    new createjs.Point(leftX + flappy.image.width - 10, leftY),
+    new createjs.Point(leftX, leftY + flappy.image.height - 10),
+    new createjs.Point(leftX + flappy.image.width - 10, leftY + flappy.image.height - 10)
+  ];
+
+  for(var i=0;i<points.length; i++){
+    var objects = stage.getObjectsUnderPoint(points[i].x, points[i].y);
+    if(objects.filter(o => o.name == "pipe").length > 0){
+      gameOver();
+      return;
+    }
+  }
+
+}
+
+
+const gameOver = () => {
+  createjs.Tween.removeAllTweens(); //stop all tweens... 
+  console.log('game over... ')
+}
