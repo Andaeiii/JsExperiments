@@ -1,4 +1,5 @@
 var stage, loader, flappy;
+var started = false;
 
 
 function init(){
@@ -39,7 +40,7 @@ function init(){
 function onAssetLoadComplete(){
   createClouds();
   createFlappy();
-  createPipes();
+  //createPipes();   //remove create pipes.. and add it to the jumpFlappy function...
 
   //add listeners... 
   stage.on("stagemousedown", jumpFlappy);
@@ -89,6 +90,9 @@ function createFlappy(){
 
 
 function jumpFlappy(){
+  if(!started){
+    startGame();
+  }
   //y goes from up to down.... 
   createjs.Tween.get(flappy, {override: true})    //override means cancel the previous tween if overlaps exist.
       .to({y:flappy.y - 60, rotation: -15}, 500, createjs.Ease.getPowOut(2))
@@ -104,21 +108,43 @@ function createPipes(){
 
   topPipe = new createjs.Bitmap(loader.getResult('pipe'));
   topPipe.y = position - 75;
-  topPipe.x = stage.canvas.width / 2; //set in middle.. 
+  topPipe.x = stage.canvas.width + (topPipe.image.width / 2); //set in middle.. 
   topPipe.rotation = 180;
   topPipe.name = 'pipe';
 
 
   bottomPipe = new createjs.Bitmap(loader.getResult('pipe'));
   bottomPipe.y = position + 75;
-  bottomPipe.x = stage.canvas.width / 2; 
+  bottomPipe.x = stage.canvas.width + (bottomPipe.image.width / 2); 
   bottomPipe.skewY = 180;  //skewObject on X axis. 
   bottomPipe.name = "pipe"; 
 
 
   topPipe.regX = bottomPipe.regX = topPipe.image.width / 2 ; 
 
+
+  createjs.Tween.get(topPipe).to({x:0 - topPipe.image.width}, 10000).call(function(){
+    removePipe(topPipe);
+  });
+
+  createjs.Tween.get(bottomPipe).to({x: 0 - bottomPipe.image.width}, 10000).call(function(){
+    removePipe(bottomPipe);
+  });
+
+
   stage.addChild(bottomPipe, topPipe)
+}
+
+
+
+function removePipe(pipe){
+  stage.removeChild(pipe);
+}
+
+function startGame(){
+  started = true;
+  createPipes();
+  ;setInterval(createPipes, 6000); //create pipes once every 6 minutes... 
 }
 
 
