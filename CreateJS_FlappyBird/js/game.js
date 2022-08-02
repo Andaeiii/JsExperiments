@@ -1,4 +1,4 @@
-var stage, canvas;
+var stage, loader
 
 
 function init(){
@@ -17,4 +17,41 @@ function init(){
       stage.addChild(bg);
 
       stage.update();
+
+
+      //load the images.... using preload.js 
+      var manifest = [
+        {"src":"cloud.png", "id":"cloud" },
+        {"src":"flappy.png", "id":"flappy" },
+        {"src":"pipe.png", "id":"pipe" }
+      ];
+
+      //initialize the loader...
+      loader = new createjs.LoadQueue(true); 
+      loader.addEventListener("complete", onAssetLoadComplete);
+      loader.loadManifest(manifest, true, "./imgs/");
+}
+
+function onAssetLoadComplete(){
+  createClouds();
+}
+
+//so bitmaps - extends DisplayObject and needs no caching.. 
+//things on the stage will display in the order you add them... 
+//add background first. 
+//then add objects on them. 
+
+
+function createClouds(){
+  let pos = [[40, 20],[140, 70], [100, 130]];
+  var clouds = [];
+  for(var i=0;i<3; i++){
+    let cloud = new createjs.Bitmap(loader.getResult('cloud'));
+    clouds.push(cloud);
+    //position them. 
+    cloud.x = pos[i][0];
+    cloud.y = pos[i][1];
+    stage.addChild(cloud);
+  }
+  stage.update();
 }
