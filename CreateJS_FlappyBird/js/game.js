@@ -1,10 +1,12 @@
 var stage, loader, flappy;
 var started = false;
 
+var polygon; // to get an easier way to create collisions... 
+
 
 function init(){
   // Create your red square
-  stage = new createjs.StageGL("gameCanvas");
+  stage = new createjs.Stage("gameCanvas");
 
   //add Ticker - frameRate Timer.. 
   createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;   //target a certain framerate. 
@@ -45,6 +47,8 @@ function onAssetLoadComplete(){
   //add listeners... 
   stage.on("stagemousedown", jumpFlappy);
   createjs.Ticker.addEventListener("tick", checkCollision);     //check collision.. 
+
+  stage.addChild(polygon);
 }
 
 //so bitmaps - extends DisplayObject and needs no caching.. 
@@ -87,6 +91,8 @@ function createFlappy(){
   flappy.x = stage.canvas.width / 2; 
   flappy.y = stage.canvas.height / 2;
   stage.addChild(flappy);
+
+  polygon = new createjs.Shape();
 }
 
 
@@ -145,7 +151,7 @@ function removePipe(pipe){
 function startGame(){
   started = true;
   createPipes();
-  ;setInterval(createPipes, 6000); //create pipes once every 6 minutes... 
+  setInterval(createPipes, 6000); //create pipes once every 6 minutes... 
 }
 
 
@@ -159,6 +165,13 @@ function checkCollision(){
     new createjs.Point(leftX, leftY + flappy.image.height - 10),
     new createjs.Point(leftX + flappy.image.width - 10, leftY + flappy.image.height - 10)
   ];
+
+  polygon.graphics.clear().beginStroke("black");
+  polygon.graphics.moveTo(points[0].x, points[0].y)
+                  .lineTo(points[2].x, points[2].y)
+                  .lineTo(points[3].x, points[3].y)
+                  .lineTo(points[1].x, points[1].y)
+                  .lineTo(points[0].x, points[0].y);
 
   for(var i=0;i<points.length; i++){
     var objects = stage.getObjectsUnderPoint(points[i].x, points[i].y);
