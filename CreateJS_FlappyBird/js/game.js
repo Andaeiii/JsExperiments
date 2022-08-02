@@ -5,8 +5,13 @@ function init(){
   // Create your red square
   stage = new createjs.StageGL("gameCanvas");
 
-      //beginLinearGradientFill([colors], [percentages], angle, angle, angle, height)
+  //add Ticker - frameRate Timer.. 
+  createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;   //target a certain framerate. 
+  createjs.Ticker.framerate = 60;                             //now you set it to 60fps. 
+  createjs.Ticker.addEventListener("tick", stage);   //automatically calls the stage.update(). 
 
+
+  //beginLinearGradientFill([colors], [percentages], angle, angle, angle, height)
   var bgColorGFX = new createjs.Graphics().beginLinearGradientFill(["#2573BB","#6CB8DA", "#567A32"], [0, .85, 1], 0, 0, 0, 480).drawRect(0, 0, 320, 480);
   var bg = new createjs.Shape().set({graphics: bgColorGFX});
       bg.x = 0; 
@@ -15,8 +20,7 @@ function init(){
       bg.cache(0, 0, 320, 480);  //you have to cache if using stageGL.. 
 
       stage.addChild(bg);
-
-      stage.update();
+      //stage.update();       //background is set... 
 
 
       //load the images.... using preload.js 
@@ -53,5 +57,6 @@ function createClouds(){
     cloud.y = pos[i][1];
     stage.addChild(cloud);
   }
-  stage.update();
+
+  //stage.update();
 }
