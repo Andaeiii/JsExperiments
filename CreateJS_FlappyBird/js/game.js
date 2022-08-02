@@ -39,6 +39,7 @@ function init(){
 function onAssetLoadComplete(){
   createClouds();
   createFlappy();
+  createPipes();
 
   //add listeners... 
   stage.on("stagemousedown", jumpFlappy);
@@ -94,6 +95,30 @@ function jumpFlappy(){
       .to({y: stage.canvas.height + (flappy.image.width/2), rotation: 30}, 1500, createjs.Ease.getPowIn(2))
       .call(gameOver);
 
+}
+
+
+function createPipes(){
+  var topPipe, bottomPipe;
+  var position = Math.floor(Math.random() * 280 + 100); //280 -gap. 
+
+  topPipe = new createjs.Bitmap(loader.getResult('pipe'));
+  topPipe.y = position - 75;
+  topPipe.x = stage.canvas.width / 2; //set in middle.. 
+  topPipe.rotation = 180;
+  topPipe.name = 'pipe';
+
+
+  bottomPipe = new createjs.Bitmap(loader.getResult('pipe'));
+  bottomPipe.y = position + 75;
+  bottomPipe.x = stage.canvas.width / 2; 
+  bottomPipe.skewY = 180;  //skewObject on X axis. 
+  bottomPipe.name = "pipe"; 
+
+
+  topPipe.regX = bottomPipe.regX = topPipe.image.width / 2 ; 
+
+  stage.addChild(bottomPipe, topPipe)
 }
 
 
