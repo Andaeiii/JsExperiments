@@ -1,4 +1,4 @@
-var stage, loader
+var stage, loader, flappy;
 
 
 function init(){
@@ -38,6 +38,10 @@ function init(){
 
 function onAssetLoadComplete(){
   createClouds();
+  createFlappy();
+
+  //add listeners... 
+  stage.on("stagemousedown", jumpFlappy);
 }
 
 //so bitmaps - extends DisplayObject and needs no caching.. 
@@ -55,8 +59,42 @@ function createClouds(){
     //position them. 
     cloud.x = pos[i][0];
     cloud.y = pos[i][1];
+
+    //add animation to the cloud before adding it to the stage... 
+
+    var dxnIndex = i % 2 == 0 ? -1 : 1;
+    var originalX = cloud.x;
+
+    createjs.Tween.get(cloud, {loop: true})
+            .to({x: cloud.x - (200 * dxnIndex)}, 3000, createjs.Ease.getPowInOut(2))
+            .to({x: originalX}, 3000, createjs.Ease.getPowInOut(2));
+
+
     stage.addChild(cloud);
   }
 
   //stage.update();
 }
+
+
+function createFlappy(){
+  flappy = new createjs.Bitmap(loader.getResult('flappy'));
+  flappy.regX = flappy.image.width / 2;
+  flappy.regY = flappy.image.height / 2 ; 
+  flappy.x = stage.canvas.width / 2; 
+  flappy.y = stage.canvas.height / 2;
+  stage.addChild(flappy);
+}
+
+
+function jumpFlappy(){
+  //y goes from up to down.... 
+  createjs.Tween.get(flappy, {override: true})    //override means cancel the previous tween if overlaps exist.
+      .to({y:flappy.y - 60, rotation: -15}, 500, createjs.Ease.getPowOut(2))
+      .to({y: stage.canvas.height + (flappy.image.width/2), rotation: 30}, 1500, createjs.Ease.getPowIn(2))
+      .call(gameOver);
+
+}
+
+
+const gameOver = () => console.log('game over... ')
