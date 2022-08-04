@@ -65,7 +65,7 @@ function onAssetLoadComplete(){
   stage.on("stagemousedown", jumpFlappy);
   createjs.Ticker.addEventListener("tick", checkCollision);     //check collision.. 
 
-  stage.addChild(polygon);
+  // stage.addChild(polygon);  // hide the polygon...
   
   doResetAction();
 }
@@ -112,6 +112,7 @@ function createFlappy(){
   stage.addChild(flappy);
 
   polygon = new createjs.Shape();
+  polygon.alpha = 0.3;
 }
 
 
