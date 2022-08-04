@@ -98,7 +98,13 @@ function moveBall(){
 
 
 function blinkDots(){
-    
+   dotsArr.forEach(dot => {
+        if(parseInt(dot.id) % 5 == 0){
+            let _alpha = dot.alpha;
+            //createjs.Tween.get(dot, {loop: true}).to({alpha: 0, scaleX:2, scaleY:2}, 500).to({alpha: _alpha, scaleX:1, scaleY:1}, 500);
+            //console.log(createjs.Ticker.getTics())
+        }
+   })
 }
 
 var colors = ['#C33F00', '#CDD24F', '#C5573E'];

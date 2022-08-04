@@ -2,7 +2,7 @@ var stage, loader, flappy;
 var started = false;
 
 var polygon; // to get an easier way to create collisions... 
-
+var resetbtn;
 
 function init(){
   // Create your red square
@@ -30,6 +30,7 @@ function init(){
       var manifest = [
         {"src":"cloud.png", "id":"cloud" },
         {"src":"flappy.png", "id":"flappy" },
+        {"src":"resetbtn.png", "id":"reset" },
         {"src":"pipe.png", "id":"pipe" }
       ];
 
@@ -49,6 +50,8 @@ function onAssetLoadComplete(){
   createjs.Ticker.addEventListener("tick", checkCollision);     //check collision.. 
 
   stage.addChild(polygon);
+  
+  doResetAction();
 }
 
 //so bitmaps - extends DisplayObject and needs no caching.. 
@@ -188,12 +191,25 @@ const gameOver = () => {
   createjs.Tween.removeAllTweens(); //stop all tweens... 
   //createjs.Ticker.removeEventListener("tick", checkCollision);   //automatically stop onEnterFrameEventss. the stage.update(). 
   console.log('game over... ');
+  resetbtn.visible = true;
   started = false;
 }
 
 
 
+const doResetAction = () => {
+  //add reset btn... 
+  resetbtn = new createjs.Bitmap(loader.getResult('reset'));
+  resetbtn.x = 20;
+  resetbtn.visible = false;
+  resetbtn.y = stage.canvas.height - (resetbtn.image.width + 20);
+  stage.addChild(resetbtn);
 
+  resetbtn.addEventListener('click', function(){
+    window.location.reload();
+  })
+
+}
 
 
 
