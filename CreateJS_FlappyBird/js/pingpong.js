@@ -1,15 +1,23 @@
 var stage;
 var ball;
-var cw, chl;
+var cw, chl, dotsArr;
 
 var o, b;
-var vx = 2.6, vy = 2.8, speed = 10;
+var vx = 2.6, vy = 2.8, sp = 10;  //speed
 
-const getv = v => v.value;
-const setVX = (o) => console.log(getv(o));
+//const getv = v => console.log(v.value);
+function setIframeVal(type, v){
+    //console.log(type, v);
+    this[type] = v;    //if type is not = 'sp' multiply by 5.
+}
+
+
+
 
 function startPingPong(){
-    stage = new createjs.Stage("bgcanvas");
+   stage = new createjs.Stage("bgcanvas");
+
+   dotsArr = [];
 
     
   //canvas dimensions.. 
@@ -40,6 +48,8 @@ function addDotsToStage(){
         o.graphics.beginFill(getRandomColor()).drawCircle(0, 0, 5); 
         stage.addChild(o);
 
+        dotsArr.push(o);
+
         //add squares. 
         b = new createjs.Shape();
         b.regX = 5;
@@ -50,6 +60,8 @@ function addDotsToStage(){
 
         b.graphics.beginFill(getRandomColor()).drawRect(0, 0, 10, 10); 
         stage.addChild(b);
+
+        dotsArr.push(b);
     }
 }
 
@@ -68,11 +80,12 @@ function createPingPongBall(){
 
 function tickerActions(){
     moveBall();   //automatically calls the stage.update(). 
+    blinkDots();
 }
 
 function moveBall(){
-    ball.x += speed * vx;
-    ball.y += speed * vy;
+    ball.x += sp * vx;
+    ball.y += sp * vy;
 
     if(ball.y > ch) vy *= -1;
     if(ball.x > cw) vx *= -1;
@@ -81,6 +94,11 @@ function moveBall(){
     if(ball.x < 0) vx *= -1;
 
     //ball.cache(0, 0, cw, ch);  //you have to cache if using stageGL.. 
+}
+
+
+function blinkDots(){
+    
 }
 
 var colors = ['#C33F00', '#CDD24F', '#C5573E'];

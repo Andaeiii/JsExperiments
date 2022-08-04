@@ -16,25 +16,35 @@
         Experiments</h1>
 
         <span>1. ping pong (background)</span>
+        <span>2. Dots on the Background</span>
         <span>2. Bird Game(click to play)</span>
         <br/>
         <div class="ctrls">
-            <select id="vxobj" onchange="setVX(this)">
-                <option> change vx </option>
-            </select>
-            <select id="vyobj" onchange="setVY(this)">
-                <option>change vy </option>
-            </select>
-            <select id="spobj" onchange="setSpd(this)">
-                <option>change speed </option>
-            </select>
+            <div>
+                <span>Velocity-X</span>
+                <select id="vxobj" onchange="setWProp(this,'vx')">
+                    <option> change vx </option>
+                </select>
+            </div>
+            <div>
+                <span>Velocity-Y</span>
+                <select id="vyobj" onchange="setWProp(this, 'vy')">
+                    <option>change vy </option>
+                </select>
+            </div>
+            <div>
+                <span>Speed</span>
+                <select id="spobj" onchange="setWProp(this, 'sp')">
+                    <option>change speed </option>
+                </select>
+            </div>
         </div>
     </div>
 
 
     <canvas class="gamecanvas" id="gameCanvas" width="320" height="480"></canvas>
        
-    <iframe src="pingpong.html" width="700" height="500" frameborder="6"></iframe>    
+    <iframe id="pingObj" src="pingpong.html" frameborder="6"></iframe>    
 
     <script src="./js/game.js"></script>
 
@@ -55,12 +65,16 @@
             }
 
 
-            const getRange = (start, end) => Array(end - start + 1).fill().map((_, idx) => start + idx);
+            const getRange = (start, end) => Array(end - start + 1).fill().map((_, idx) => start + idx);  //get range of values... 
 
             const populateSelObjs = () => {
                 let objs = ['vxobj','vyobj','spobj'];
                 objs.forEach(o => {
-                    let vx = getRange(5, 23).map(v => `<option value="${v}">${v}</option>`);
+                    let spd = 0;
+                    let vx = getRange(1, 40).map(v => {
+                        spd = (o != 'spobj') ? v/10 : (v/10)+(2 * v) ; 
+                        return `<option value="${spd}">${spd} m/s </option>`;
+                    });  
                     str = ['<option>change value..</option>', ...vx].join('');
                    // console.log(str);
                     document.getElementById(o).innerHTML = str;

@@ -199,3 +199,4 @@ const gameOver = () => {
 
 
 
+const setWProp = (obj, type) => document.getElementById('pingObj').contentWindow.setIframeVal(type, obj.value);
