@@ -5,17 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CreateJS - Xample.....</title>
-    <link type="text/css" rel="stylesheets" href="./styles.css" />
+    <link type="text/css" rel="stylesheet" href="./styles.css" />
     <script src="./libs/createjs.min.js"></script>
 </head>
-<body onload="init();">
+<body>
 
-    <canvas id="gameCanvas" width="320" height="480" style="display:block; margin:0px auto; border:solid 3px #ccc;"></canvas>
+
+    <div class="tp">
+        <h1>My CreateJS  <br/> Animation </br/>
+        Experiments</h1>
+
+        <span>1. ping pong (background)</span>
+        <span>2. Bird Game(click to play)</span>
+        <br/>
+        <div class="ctrls">
+            <select id="vxobj" onchange="setVX(this)">
+                <option> change vx </option>
+            </select>
+            <select id="vyobj" onchange="setVY(this)">
+                <option>change vy </option>
+            </select>
+            <select id="spobj" onchange="setSpd(this)">
+                <option>change speed </option>
+            </select>
+        </div>
+    </div>
+
+
+    <canvas class="gamecanvas" id="gameCanvas" width="320" height="480"></canvas>
+       
+    <iframe src="pingpong.html" width="700" height="500" frameborder="6"></iframe>    
 
     <script src="./js/game.js"></script>
+
     <script>
 
-    </script>
+        (function() {
+            var htmlCanvas = document.getElementById('bgcanvas');
+            window.addEventListener('resize', resizeCanvas, false);
+
+            init();
+            //startPingPong();
+
+            function resizeCanvas() {
+                htmlCanvas.width = window.innerWidth;
+                htmlCanvas.height = window.innerHeight;
+                init();
+                //startPingPong();
+            }
+
+
+            const getRange = (start, end) => Array(end - start + 1).fill().map((_, idx) => start + idx);
+
+            const populateSelObjs = () => {
+                let objs = ['vxobj','vyobj','spobj'];
+                objs.forEach(o => {
+                    let vx = getRange(5, 23).map(v => `<option value="${v}">${v}</option>`);
+                    str = ['<option>change value..</option>', ...vx].join('');
+                   // console.log(str);
+                    document.getElementById(o).innerHTML = str;
+                });
+            }
+            populateSelObjs();
+
+        })();
+
+
+
+
+
+</script>
 
 
 </body>

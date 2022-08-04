@@ -186,5 +186,16 @@ function checkCollision(){
 
 const gameOver = () => {
   createjs.Tween.removeAllTweens(); //stop all tweens... 
-  console.log('game over... ')
+  //createjs.Ticker.removeEventListener("tick", checkCollision);   //automatically stop onEnterFrameEventss. the stage.update(). 
+  console.log('game over... ');
+  started = false;
 }
+
+
+
+
+
+
+
+
+
