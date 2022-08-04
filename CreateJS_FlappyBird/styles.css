@@ -16,12 +16,12 @@ body{
 .tp{
     position: absolute;
     display: block;
-    font-size:40px;
+    font-size:30px;
     font-weight: bolder;
     color:white;
     z-index: 1000;
 
-    top:100px;
+    top:10px;
     left:100px;
 }
 
@@ -89,4 +89,17 @@ body {
     margin:0px !important;
     width:120px;
     color:rgb(75, 69, 69);
+}
+
+.by{
+    font-size:13px; 
+    display: block; 
+    width:100px; 
+    margin-top:100px;
+    color:aquamarine;
+    text-decoration: none;
+}
+
+.by:hover{
+    color: yellow;
 }

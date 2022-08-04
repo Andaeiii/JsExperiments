@@ -1,5 +1,6 @@
-var stage, loader, flappy;
+var stage, loader, tx, flappy;
 var started = false;
+
 
 var polygon; // to get an easier way to create collisions... 
 var resetbtn;
@@ -14,6 +15,7 @@ function init(){
   createjs.Ticker.addEventListener("tick", stage);   //automatically calls the stage.update(). 
 
 
+
   //beginLinearGradientFill([colors], [percentages], angle, angle, angle, height)
   var bgColorGFX = new createjs.Graphics().beginLinearGradientFill(["#2573BB","#6CB8DA", "#567A32"], [0, .85, 1], 0, 0, 0, 480).drawRect(0, 0, 320, 480);
   var bg = new createjs.Shape().set({graphics: bgColorGFX});
@@ -24,6 +26,13 @@ function init(){
 
       stage.addChild(bg);
       //stage.update();       //background is set... 
+
+      
+      //add a click to play handler... 
+      tx  = new createjs.Text("Click To Start", "20px Arial", "#ffffff");
+      tx.x = stage.canvas.width - tx.width;
+      tx.y = stage.canvas.height / 2; // - tx.height; 
+      stage.addChild(tx);
 
 
       //load the images.... using preload.js 
