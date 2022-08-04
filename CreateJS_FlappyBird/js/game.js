@@ -1,4 +1,4 @@
-var stage, loader, tx, flappy;
+var stage, loader, txbox, tx, flappy;
 var started = false;
 
 
@@ -30,9 +30,16 @@ function init(){
       
       //add a click to play handler... 
       tx  = new createjs.Text("Click To Start", "20px Arial", "#ffffff");
-      tx.x = stage.canvas.width - tx.width;
-      tx.y = stage.canvas.height / 2; // - tx.height; 
-      stage.addChild(tx);
+
+      //createcontainer 
+      txbox = new createjs.Container();
+      txbox.addChild(tx);
+
+      txbox.x = 100;
+      txbox.y = 280; // - tx.height; 
+      txbox.alpha = 0.5;
+
+      stage.addChild(txbox);
 
 
       //load the images.... using preload.js 
@@ -108,7 +115,12 @@ function createFlappy(){
 }
 
 
+
+//jump flappy starts the game... 
 function jumpFlappy(){
+  
+  txbox.visible = false;
+
   if(!started){
     startGame();
   }
@@ -198,8 +210,13 @@ function checkCollision(){
 
 const gameOver = () => {
   createjs.Tween.removeAllTweens(); //stop all tweens... 
-  //createjs.Ticker.removeEventListener("tick", checkCollision);   //automatically stop onEnterFrameEventss. the stage.update(). 
-  console.log('game over... ');
+  //createjs.Ticker.removeEventListener("tick", checkCollision);   //automatically stop onEnterFrameEventss
+  bringToFront(txbox);
+  tx.text = 'Game Over... ';
+  txbox.visible = true;
+
+  //console.log(txbox.)
+  bringToFront(resetbtn);
   resetbtn.visible = true;
   started = false;
 }
@@ -207,9 +224,12 @@ const gameOver = () => {
 
 
 const doResetAction = () => {
+  
+  txbox.visible = true;
   //add reset btn... 
   resetbtn = new createjs.Bitmap(loader.getResult('reset'));
   resetbtn.x = 20;
+  resetbtn.cursor = 'help';
   resetbtn.visible = false;
   resetbtn.y = stage.canvas.height - (resetbtn.image.width + 20);
   stage.addChild(resetbtn);
@@ -221,7 +241,7 @@ const doResetAction = () => {
 }
 
 
-
+const bringToFront = (obj) => stage.setChildIndex(obj, stage.getNumChildren()-1);
 
 
 const setWProp = (obj, type) => document.getElementById('pingObj').contentWindow.setIframeVal(type, obj.value);

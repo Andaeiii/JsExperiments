@@ -42,7 +42,7 @@
 
 
 
-        <a class="by" href="https://www.github.com/andaeiii" target="_blank">by Ande Caleb</a>
+        <a class="by" href="https://www.github.com/andaeiii" target="_blank">by Ande Caleb (Senior Frontend Dev)</a>
     </div>
 
 
@@ -55,15 +55,20 @@
     <script>
 
         (function() {
-            var htmlCanvas = document.getElementById('bgcanvas');
+            var cvv = document.getElementById('gameCanvas');
             window.addEventListener('resize', resizeCanvas, false);
 
             init();
             //startPingPong();
 
             function resizeCanvas() {
-                htmlCanvas.width = window.innerWidth;
-                htmlCanvas.height = window.innerHeight;
+                window.location.reload();
+                cvv.width = window.innerWidth;
+                cvv.height = window.innerHeight;
+                if(window.innerWidth < 800){
+                    alert('not for mobile, yet');
+                    return;
+                }
                 init();
                 //startPingPong();
             }
