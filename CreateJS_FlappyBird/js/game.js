@@ -235,6 +235,10 @@ const doResetAction = () => {
   resetbtn.y = stage.canvas.height - (resetbtn.image.width + 20);
   stage.addChild(resetbtn);
 
+  // setInterval(function(){
+  //   window.location.reload();
+  // }, 3000);
+
   resetbtn.addEventListener('click', function(){
     window.location.reload();
   })

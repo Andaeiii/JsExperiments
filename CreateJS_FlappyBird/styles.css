@@ -140,7 +140,7 @@ body {
       position:fixed;
       z-index:10000;
       bottom:40px;
-      left:15%;
+      left:5%;
    }
 
    .tpx{
@@ -151,12 +151,12 @@ body {
         position:fixed;
         z-index: 10000;
         bottom:100px;
-        left:15%;
+        left:5%;
         color:#fff !important;
    }
 
    .gamecanvas{
-      right:18%;
+      margin:0px auto !important;
    }
 }
 
