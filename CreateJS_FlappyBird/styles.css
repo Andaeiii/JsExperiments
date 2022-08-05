@@ -25,6 +25,10 @@ body{
     left:100px;
 }
 
+.tp > h1{
+    margin-bottom: 0px !important;
+}
+
 .tp > span{
     display:block;
     margin-bottom: 10px;
@@ -63,6 +67,17 @@ body {
 }
 
 
+.tasks{
+    color:rgb(60, 255, 60) !important;
+}
+
+.msgg{
+    width:350px;
+    font-size:12px !important;
+    color:rgb(147, 148, 148) !important;
+    text-shadow: #000 2px 2px 2px;
+}
+
 
 .bgcanvas{
     background-color: rgb(35, 35, 36);
@@ -75,8 +90,19 @@ body {
     width:380px;
 }
 
-.ctrls > div{
-    /* border:solid 1px #fff; */
+.tpx{
+    color:#ccc !important;
+    margin-top:5px;
+    width:450px;
+}
+
+.tpx a{
+    color:rgb(9, 212, 145);
+    text-decoration: none;
+}
+
+.tpx a:hover{
+    color:yellow;
 }
 
 .ctrls > div > span{
@@ -95,7 +121,7 @@ body {
     font-size:13px; 
     display: block; 
     width:250px; 
-    margin-top:100px;
+    margin-top:80px;
     color:aquamarine;
     text-decoration: none;
 }
