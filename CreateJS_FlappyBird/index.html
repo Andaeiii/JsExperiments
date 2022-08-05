@@ -11,7 +11,7 @@
 <body>
 
 
-    <div class="tp">
+    <div id="infopg" class="tp">
         <h1>JS Experiments</h1>
             <span class="msgg tpx"> Canvas Animations using - 
                 <a href="https://createjs.com/" target="_blank" title="Rich interactive HTML5 Animation Library">CreateJS</a>, 
@@ -89,8 +89,8 @@
                 //startPingPong();
             }
 
-
             const getRange = (start, end) => Array(end - start + 1).fill().map((_, idx) => start + idx);  //get range of values... 
+        
 
             const populateSelObjs = () => {
                 let objs = ['vxobj','vyobj','spobj'];
