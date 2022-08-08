@@ -9,7 +9,9 @@ function drawMapObject(){
 
   createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;  
   createjs.Ticker.framerate = 60;   
-  createjs.Ticker.addEventListener("tick", stage);   
+  createjs.Ticker.addEventListener("tick", function(event){
+    stage.update(event);
+  });   
 
 
  drawMap();
@@ -20,13 +22,12 @@ function drawMapObject(){
 
 function drawMap(){
     g = new createjs.Shape();
-    g.graphics.setStrokeStyle(1).beginStroke("white");
-   // g.graphics.beginFill('0xff0000');
-    g.graphics.moveTo(100, 100);
-    g.graphics.lineTo(800, 100);
-    g.graphics.lineTo(800, 800);
-    
-    g.graphics.endStroke();
+    g.graphics.setStrokeSize(1);
+    g.graphics.beginStroke("white").moveTo(100, 100)
+    .lineTo(800, 600)
+    .lineTo(400, 200)
+    .lineTo(900, 20);
+
    //g.graphics.endFill();
     stage.addChild(g); 
 
