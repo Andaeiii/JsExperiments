@@ -60,7 +60,7 @@ function addDotsToStage(){
         b.x = Math.abs(cw - (Math.random() * cw));
         b.y = Math.abs(ch - (Math.random() * ch));
 
-        b.graphics.beginFill(getRandomColor()).drawRect(0, 0, 10, 10); 
+        b.graphics.beginFill(getRandomColor()).drawRect(0, 0, 5, 5); 
         stage.addChild(b);
 
         dotsArr.push(b);
@@ -120,10 +120,10 @@ function blinkDots(){
             .to({alpha: _alpha, scaleX:1, scaleY:1}, 1000);
         }
 
-        if(parseInt(dot.id) % 2 == 0){
+        if(parseInt(dot.id) % 4 == 0){
             createjs.Tween.get(dot, {loop: true, override:true})
             .to({scaleX:0, scaleY:0}, 1000)
-            .to({scaleX:0.5, scaleY:0.5}, 100);
+            .to({scaleX:0.5, scaleY:0.5}, 2000);
         }
 
         if(parseInt(dot.id) % 5 == 0){

@@ -99,13 +99,6 @@ function createClouds(){
     stage.addChild(cloud);
   }
 
-  //stage.update();
-        if(parseInt(dot.id) % 5 == 0){
-            let _alpha = dot.alpha;
-            createjs.Tween.get(dot, {loop: true})
-            .to({alpha: 0, scaleX:0.2, scaleY:0.2}, 500)
-            .to({alpha: _alpha, scaleX:1, scaleY:1}, 500);
-        }
 }
 
 
