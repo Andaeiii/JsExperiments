@@ -29,7 +29,7 @@ function init(){
 
       
       //add a click to play handler... 
-      tx  = new createjs.Text("Click To Start", "20px Arial", "#ffffff");
+      tx  = new createjs.Text("", "20px Arial", "#ffffff");
 
       //createcontainer 
       txbox = new createjs.Container();
@@ -53,10 +53,16 @@ function init(){
       //initialize the loader...
       loader = new createjs.LoadQueue(true); 
       loader.addEventListener("complete", onAssetLoadComplete);
+      loader.addEventListener("progress", onAssetLoadProgress);
       loader.loadManifest(manifest, true, "./imgs/");
 }
 
+function onAssetLoadProgress(){
+  tx.text = 'Loading Assets';
+}
+
 function onAssetLoadComplete(){
+  tx.text = 'Click To Start';
   createClouds();
   createFlappy();
   //createPipes();   //remove create pipes.. and add it to the jumpFlappy function...
