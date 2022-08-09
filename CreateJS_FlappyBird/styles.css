@@ -73,7 +73,7 @@ body {
 
 .msgg{
     width:350px;
-    font-size:12px !important;
+    font-size:11px !important;
     color:rgb(147, 148, 148) !important;
     text-shadow: #000 2px 2px 2px;
 }
@@ -104,6 +104,8 @@ body {
 .tpx a:hover{
     color:yellow;
 }
+
+.p_done{opacity:0.4}
 
 .ctrls > div > span{
     display: block;
