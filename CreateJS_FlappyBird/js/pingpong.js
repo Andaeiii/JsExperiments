@@ -32,6 +32,8 @@ function startPingPong(){
     addDotsToStage();
     createPingPongBall(); 
     
+    blinkDots();
+    
     createjs.Ticker.addEventListener("tick", tickerActions);
 }
 
@@ -80,7 +82,6 @@ function createPingPongBall(){
 
 function tickerActions(){
     moveBall();   //automatically calls the stage.update(). 
-    blinkDots();
 }
 
 function moveBall(){
@@ -99,10 +100,37 @@ function moveBall(){
 
 function blinkDots(){
    dotsArr.forEach(dot => {
+        if(parseInt(dot.id) % 3 == 0){
+            let _alpha = dot.alpha;
+            createjs.Tween.get(dot, {loop: true, override:true})
+            .to({alpha: 0, scaleX:0.2, scaleY:0.2}, 500)
+            .to({alpha: _alpha, scaleX:1, scaleY:1}, 500);
+        }
+        if(parseInt(dot.id) % 7 == 0){
+            let _alpha = dot.alpha;
+            createjs.Tween.get(dot, {loop: true, override:true})
+            .to({alpha: 0, scaleX:0.1, scaleY:0.1}, 100)
+            .to({alpha: _alpha, scaleX:0.5, scaleY:0.5}, 100);
+        }
+
+        if(parseInt(dot.id) % 2 == 1){
+            let _alpha = dot.alpha;
+            createjs.Tween.get(dot, {loop: true, override:true})
+            .to({alpha: 0, scaleX:0.1, scaleY:0.1}, 1000)
+            .to({alpha: _alpha, scaleX:1, scaleY:1}, 1000);
+        }
+
+        if(parseInt(dot.id) % 2 == 0){
+            createjs.Tween.get(dot, {loop: true, override:true})
+            .to({scaleX:0, scaleY:0}, 1000)
+            .to({scaleX:0.5, scaleY:0.5}, 100);
+        }
+
         if(parseInt(dot.id) % 5 == 0){
             let _alpha = dot.alpha;
-            //createjs.Tween.get(dot, {loop: true}).to({alpha: 0, scaleX:2, scaleY:2}, 500).to({alpha: _alpha, scaleX:1, scaleY:1}, 500);
-            //console.log(createjs.Ticker.getTics())
+            createjs.Tween.get(dot, {loop: true, override:true})
+            .to({alpha: 0, scaleX:0, scaleY:0}, 1000)
+            .to({alpha: _alpha, scaleX:0.4, scaleY:0.4}, 400);
         }
    })
 }
