@@ -1,6 +1,8 @@
 var stage, loader, txbox, tx, flappy;
 var started = false;
 
+var spSheet;  //spriteSheet
+
 
 var polygon; // to get an easier way to create collisions... 
 var resetbtn;
@@ -47,7 +49,8 @@ function init(){
         {"src":"cloud.png", "id":"cloud" },
         {"src":"flappy.png", "id":"flappy" },
         {"src":"resetbtn.png", "id":"reset" },
-        {"src":"pipe.png", "id":"pipe" }
+        {"src":"pipe.png", "id":"pipe" },
+        {"src": "sheet.json", "id": "sheet", "type": "spritesheet"}
       ];
 
       //initialize the loader...
@@ -74,6 +77,11 @@ function onAssetLoadComplete(){
   // stage.addChild(polygon);  // hide the polygon...
   
   doResetAction();
+
+
+  //build Animations and floor... 
+  buildFloorBed();
+  buildAnimationObject();
 }
 
 //so bitmaps - extends DisplayObject and needs no caching.. 
@@ -104,6 +112,19 @@ function createClouds(){
 
     stage.addChild(cloud);
   }
+
+}
+
+
+function buildFloorBed(){
+  var floor = new createjs.Sprite(spSheet, "Floor");
+  floor.x = i * 256;
+  floor.y = 400;
+  stage.addChild(floor);
+
+}
+
+function buildAnimationObject(){
 
 }
 
