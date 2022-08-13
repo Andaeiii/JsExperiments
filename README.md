@@ -7,6 +7,6 @@ i use this to test out code-snipplets before engaging them in projects.. for con
 
 - PHP Code goes into the php folder
 
-- JS files are separated into projects be sure to check it projects with its corresponding files
+- JS files are separated into projects be sure to check it projects with its corresponding files, projects ranging from 2d to 3d JS animations and visualizations... and others. 
 
 - HTML/CSS in the index folder...
