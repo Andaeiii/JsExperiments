@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{background-color: #000;}
+        canvas{
+            border:solid 1px rgb(55, 55, 4);
+        }
+        div{
+            margin:0px auto;
+            width:100%;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <canvas class="canvas" id="cvs" width="600" height="500"></canvas>
+</div>
+    
+    <script src="./libs/createjs.min.js"></script>
+    <script src="./js/sfscript.js"></script>
+    <script>
+        (function(){
+            initProj();
+        })(window);
+    </script>
+
+</body>
+</html>
