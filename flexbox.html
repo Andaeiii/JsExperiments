@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
+
+
     <style type="text/css">
-        div{
+        div {
             /* border:solid 3px #000; */
             border-collapse: collapse;
         }
-
-        .sshow{
-            width:1350px;
-            height:650px;
-            display:flex;
+        
+        .sshow {
+            width: 1350px;
+            height: 650px;
+            display: flex;
             justify-content: center;
         }
-
-        .chcard{
-            width:100%;
-            border-color:red;
-            display:flex;
+        
+        .chcard {
+            width: 100%;
+            border-color: red;
+            display: flex;
         }
-
-        .b20{
-            width:20%;
-            margin:3px;
-            
-            display: flex;                  /* enables you to use the  */
-            flex-direction: column;         /* makes it either horizontal or vertical. */
-  
+        
+        .b20 {
+            width: 60%;
+            margin: 3px;
+            display: flex;
+            /* enables you to use the  */
+            flex-direction: row;
+            align-items: stretch;
+            /* makes it either horizontal or vertical. */
         }
-
         /* .b20 > div{
             flex:1;    
             border-color: red;
@@ -44,55 +48,104 @@
             padding:10px;
         } */
         
-        .b20 > div{
-             /* flex:1;  takes the available space of the parent... */
+        .b20>div {
+            flex: 1;
+            /**/
+            /*takes the available space of the parent... */
             border-radius: 20px;
-            margin:3px;
-            padding:10px;
+            margin: 3px;
+            padding: 10px;
         }
-
-        .b20 > div:nth-child(even){
-            flex:1;   /* takes the available space of the parent... */
+        
+        .b20>div:nth-child(even) {
+            /* flex: 1; */
             border-color: rgb(0, 102, 116);
         }
-
-        .b20 > div:nth-child(odd){
-            height:80px !important;
+        
+        .b20>div:nth-child(odd) {
+            /* flex: 1; */
+            height: 80px !important;
             border-color: #000;
         }
-
-
-        .b80{
-            flex-grow: 1;  /*  fill the remaining space...   */
-            margin:3px;
-            background-color:aquamarine;
+        
+        .b80 {
+            flex-grow: 1;
+            /*  fill the remaining space...   */
+            margin: 3px;
+            background-color: aquamarine;
         }
-
-        .tpnum{
-            font-size:60px;
-            padding-top:40px;
-            color:#fff;
+        
+        .tpnum {
+            font-size: 60px;
+            padding-top: 40px;
+            color: #fff;
             text-align: center;
         }
-
-        .tptxt{
+        
+        .tptxt {
             text-align: center;
-            color:#fff;
+            color: #fff;
         }
-
     </style>
-    
 
+
+
+    <style type="text/css">
+        .radcomb {
+            display: flex;
+            flex-direction: row;
+            padding: 4px;
+            min-width: 50%;
+        }
+        
+        .radcomb>div {
+            display: flex;
+            flex-direction: row;
+            margin-left: 20px;
+        }
+        
+        .radcomb span {
+            display: block;
+        }
+        
+        .radcomb span:first-child {
+            margin-right: 10px;
+        }
+        
+        .radRadiobtns {
+            width: 100%;
+            margin: 20px 0px;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            border-bottom: dotted 1px #a6a6a6;
+        }
+    </style>
+
+
+    <div class="radRadiobtns">
+        <div class="radcomb">
+            <div>Search Type :: </div>
+            <div class="radio">
+                <span><input type="radio" name="pims_radio" checked></span>
+                <span>PIMS ONLY</span>
+            </div>
+            <div class="radio">
+                <span><input name="pims_radio" type="radio"></span>
+                <span>FACILILTY & PIMS</span>
+            </div>
+        </div>
+    </div>
 
 
     <div class="sshow owl-carousel">
 
-                
+
         <div class="chcard">
 
             <div class="b20">
 
-                <div style="background-color:rgb(252, 136, 5)">
+                <div style="background-color:rgb(206, 115, 10)">
                     <div class="tpnum">500,000</div>
                     <div class="tptxt">hello how far.</div>
                 </div>
@@ -100,14 +153,16 @@
                     <div class="tpnum">500,000</div>
                     <div class="tptxt">hello how far.</div>
                 </div>
+
                 <div style="background-color:rgb(10, 199, 247)">
                     <div class="tpnum">500,000</div>
                     <div class="tptxt">hello how far.</div>
-                
+
                 </div>
+                <!---->
             </div>
 
-            
+
             <div class="b80">
 
 
@@ -122,4 +177,5 @@
 
 
 </body>
+
 </html>
