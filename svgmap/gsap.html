@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smooth Line Drawing Animation</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+<script>
+  // Set up the scene, camera, and renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // Define the main points for the line
+  const points = [
+    new THREE.Vector3(-4, 0, 0),
+    new THREE.Vector3(-3, 1, 0),
+    new THREE.Vector3(-2, 0.5, 0),
+    new THREE.Vector3(-1, 1.5, 0),
+    new THREE.Vector3(0, 1, 0),
+    new THREE.Vector3(1, 0.5, 0),
+    new THREE.Vector3(2, -1, 0),
+    new THREE.Vector3(3, -0.5, 0),
+    new THREE.Vector3(4, -1.5, 0),
+    new THREE.Vector3(5, 0, 0)
+  ];
+
+  // Create more detailed intermediate points for smooth transitions
+  function generateSmoothPath(points, segments) {
+    const smoothPoints = [];
+    for (let i = 0; i < points.length - 1; i++) {
+      const start = points[i];
+      const end = points[i + 1];
+      for (let j = 0; j <= segments; j++) {
+        const t = j / segments;
+        const x = THREE.MathUtils.lerp(start.x, end.x, t);
+        const y = THREE.MathUtils.lerp(start.y, end.y, t);
+        const z = THREE.MathUtils.lerp(start.z, end.z, t);
+        smoothPoints.push(new THREE.Vector3(x, y, z));
+      }
+    }
+    return smoothPoints;
+  }
+
+  // Generate smooth points with specified segment count for smooth transitions
+  const smoothPoints = generateSmoothPath(points, 40); // Adjust '20' for more/less smoothness
+
+  // Create buffer geometry and material for the line
+  const geometry = new THREE.BufferGeometry().setFromPoints(smoothPoints);
+  const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+
+  // Create the line and set initial draw range
+  const line = new THREE.Line(geometry, material);
+  line.geometry.setDrawRange(0, 0); // Initially draw 0 segments
+  scene.add(line);
+
+  // Position the camera
+  camera.position.z = 8;
+
+  // Animation variables
+  let drawCount = 0;
+  const maxPoints = smoothPoints.length;
+
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // Increment draw count to animate the line gradually
+    if (drawCount < maxPoints) {
+      drawCount += 1; // Adjust this value to control speed
+      line.geometry.setDrawRange(0, drawCount);
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // Adjust the renderer when the window is resized
+  window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  });
+</script>
+
+</body>
+</html>
